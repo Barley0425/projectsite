@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Москвитин - блог</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <div class="groupleft">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="blog.html" class="active">Блог</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </div>
+                
+                <button id="theme-toggle" aria-label="Переключить тему">
+                    <span class="light-icon">☀️</span>
+                    <span class="dark-icon">🌙</span>
+                </button>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <article class="post">
+            <img src="images/radost.png" alt="" class="pic">
+            <div class="lyrics">
+                <h2>Сайт готов!</h2>
+                <p class="meta">03.06.2025</p>
+                <p>Сегодня я завершил работу над своим сайтом, чтобы предоставить его в качетсве своего финального проекта по предмету Введение в направление. Вроде бы неплохо вышло.</p>
+            </div>
+        </article>
+
+        <article class="post">
+            <img src="images/grust.png" alt="" class="pic">
+            <div class="lyrics">
+                <h2>Допольнительный курс</h2>
+                <p class="meta">03.06.2025</p>
+                <p>Я заканчиваю двухгодовалый курс о Веб-дизайне, в котором я познакомился со всем пакетом приложений Adobe, получил опыт в 3д графике (Maya, zBrush), а также был обучен писать сайты на html и css, что вы наглядно видите. Должен упомянуть, что это курс на дизайн, поэтому JavaScript мы не касались...</p>
+            </div>
+        </article>
+
+        <article class="post">
+            <img src="images/grust.png" alt="" class="pic">
+            <div class="lyrics">
+                <h2>Первая сессия</h2>
+                <p class="meta">30.01.2025</p>
+                <p>После новогоднего отпуска прошла сессия, но здесь, думаю, будет интереснее узнать о том, как прошло Программирование. Вполне себе ничего, 5 за практику, 3 за устные билеты.
+            </div>
+        </article>
+
+        <article class="post">
+            <img src="images/grust.png" alt="" class="pic">
+            <div class="lyrics">
+                <h2>Окончание 11-го класса</h2>
+                <p class="meta">02.06.2024</p>
+                <p>С этой даты я официально написал все государственные экзамены и получил свободу выбора места для своего последующего поступления. В качестве "портфолио" за этот период разве что могу сказать, что ЕГЭ по предметам Математика(Профиль), Физика и Информатика я написал на более чем 70 баллов.</p>
+            </div>
+        </article>
+    </main>
+
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+        function applyTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        const systemDark = prefersDarkScheme.matches;
+        
+        if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+        }
+        }
+
+        applyTheme();
+
+        themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        
+        if (currentTheme === 'dark') {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        });
+
+        prefersDarkScheme.addEventListener('change', applyTheme);
+    </script>
+
+<!-- конктретно с кодом под кнопку для переключения темы сайта мне подсказал мой знакомый, который разбирается в скрипте лучше меня, -->
+
+</body>
+</html>

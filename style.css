@@ -1,0 +1,145 @@
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --link-color: #114da1;
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #f1f1f1;
+  --link-color: #66afe0;
+}
+
+/* Навигационное меню */
+nav {
+    background-color: #2c3e50;
+    padding: 1rem;
+}
+
+
+.nav-links {
+    list-style-type: none;
+    margin: 0 2vw;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-links .groupleft{
+    display: flex;
+    justify-content: left;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: #3498db;
+}
+
+.nav-links .active {
+    background-color: #2980b9;
+}
+
+button {
+    border: none;
+    scale: 1.5;
+    border-radius: 100px;
+    align-items: center;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.dark-icon { display: none; }
+
+[data-theme="dark"] .light-icon { display: none; }
+[data-theme="dark"] .dark-icon { display: inline; }
+
+/* Основное содержимое */
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+main img{
+    width: 400px;
+    height: 500px;
+}
+
+.container .post {
+    margin: 20px 0 0 0;
+    padding: 20px;
+    background-color: var(--bg-color);
+    display: flex;
+    transition: transform 5ms ease-in-out;
+    transition: box-shadow 8ms ease-in-out;
+    border-radius: 5px;
+    box-shadow: 0 5px 6px rgba(50, 50, 50, 0.3);
+}
+
+.post .pic {
+    width: 388px;
+    height: 284px;
+}
+
+.post .lyrics {
+    padding: 0 20px;
+    text-align: left;
+}
+
+.post:hover{
+    transform: scale(1.01);
+    box-shadow: 0 3px 10px rgba(50, 50, 50, 0.2);
+}
+
+.container .link{
+    display: flex;
+    gap: 50px;
+    padding: 10px;
+}
+
+.link .logo{
+    width: 64px;
+    height: 64px;
+}
+
+.link .logoMAIL{
+    width: 64px;
+    height: 48px;
+}
+
+a {
+    color: var(--link-color);
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        gap: 2vh;
+    }
+
+    .container .post {
+        flex-direction: column;
+    }
+}

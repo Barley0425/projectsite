@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Москвитин - Контакты</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <div class="groupleft">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="blog.html">Блог</a></li>
+                    <li><a href="contact.html" class="active">Контакты</a></li>
+                </div>
+                
+                <button id="theme-toggle" aria-label="Переключить тему">
+                    <span class="light-icon">☀️</span>
+                    <span class="dark-icon">🌙</span>
+                </button>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <article class="link">
+            <img src="images/gmail.png" alt="" class="logoMAIL">
+            <p><a href="https://file.garden/ZnghpSzR8y1rAJ1v/troll.png">Моя почта</a></p>
+        </article>
+
+        <article class="link">
+            <img src="images/vk.png" alt="" class="logo">
+            <p><a href="https://file.garden/ZnghpSzR8y1rAJ1v/troll.png">Мой Вконтакте</a></p>
+        </article>
+
+                <article class="link">
+            <img src="images/telegram.png" alt="" class="logo">
+            <p><a href="https://file.garden/ZnghpSzR8y1rAJ1v/troll.png">Мой Телеграм</a></p>
+        </article>
+
+                <article class="link">
+            <img src="images/discord.png" alt="" class="logo">
+            <p><a href="https://file.garden/ZnghpSzR8y1rAJ1v/troll.png">Мой Дискорд</a></p>
+        </article>
+    </main>
+
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+        function applyTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        const systemDark = prefersDarkScheme.matches;
+        
+        if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+        }
+        }
+
+        applyTheme();
+
+        themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        
+        if (currentTheme === 'dark') {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        });
+
+        prefersDarkScheme.addEventListener('change', applyTheme);
+    </script>
+
+<!-- конктретно с кодом под кнопку для переключения темы сайта мне подсказал мой знакомый, который разбирается в скрипте лучше меня, -->
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Москвитин - главная</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <div class="groupleft">
+                    <li><a href="index.html" class="active">Главная</a></li>
+                    <li><a href="blog.html">Блог</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </div>
+                
+                <button id="theme-toggle" aria-label="Переключить тему">
+                    <span class="light-icon">☀️</span>
+                    <span class="dark-icon">🌙</span>
+                </button>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Здравствуйте! Меня зовут Москвитин Ярослав</h1>
+        <img src="images/photo.jpg" alt="">
+        <p>Это мой сайт-курсовая для предмета <a href="https://eu.iit.csu.ru/course/view.php?id=4295">Введение в направление</a>, ЧелГУ 2025.</p>
+    </main>
+
+    
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+        function applyTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        const systemDark = prefersDarkScheme.matches;
+        
+        if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+        }
+        }
+
+        applyTheme();
+
+        themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        
+        if (currentTheme === 'dark') {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        });
+
+        prefersDarkScheme.addEventListener('change', applyTheme);
+    </script>
+
+<!-- конктретно с кодом под кнопку для переключения темы сайта мне подсказал мой знакомый, который разбирается в скрипте лучше меня, -->
+
+</body>
+</html>
